@@ -14,25 +14,51 @@ Focus Mode off: windows of other apps stay on screen.
 
 ![Focus Mode off](docs/disabled.gif)
 
-## Build
+## Install
+
+1. Download `ActiveWindow.dmg` from the [latest release](https://github.com/nick318/active-window/releases/latest).
+2. Open the image and drag ActiveWindow to the Applications shortcut.
+3. Open ActiveWindow from Applications. It appears in the menu bar.
+
+The app is signed with a Developer ID and notarized by Apple. macOS 13 or later.
+
+## Use
+
+Click the menu bar icon.
+
+- **Focus Mode** turns the behavior on or off. The setting persists between launches.
+- **Launch at Login** registers the app as a login item.
+- **Quit** exits the app.
+
+## Build from source
+
+Requires Xcode command line tools.
 
 ```sh
+git clone https://github.com/nick318/active-window.git
+cd active-window
 ./build-app.sh
 open dist/ActiveWindow.app
 ```
 
-## Installer
+`build-app.sh` compiles the Swift package and creates `dist/ActiveWindow.app`.
+It signs the app with the first "Developer ID Application" identity in your keychain,
+or with an ad-hoc signature if none exists. Set `CODESIGN_IDENTITY` to choose another
+identity. Copy the app to `/Applications` if you want **Launch at Login** to survive
+a `dist` cleanup.
+
+### Build the DMG
 
 ```sh
 ./make-dmg.sh
 ```
 
-This creates `dist/ActiveWindow.dmg`. Open the image and drag ActiveWindow to the
+This creates `dist/ActiveWindow.dmg`, a drag-and-drop image with the app and an
 Applications shortcut. The image is signed with the same identity as the app.
 
-### Notarization
+### Notarize
 
-The script notarizes the app and the image when credentials are present, and
+`make-dmg.sh` notarizes the app and the image when credentials are present, and
 staples the tickets. Provide an App Store Connect API key:
 
 ```sh
@@ -48,17 +74,6 @@ NOTARY_PROFILE=<profile name> ./make-dmg.sh
 ```
 
 Set `NOTARIZE=0` to skip notarization.
-
-The app appears in the menu bar. Click the icon and toggle **Focus Mode**.
-The setting persists between launches.
-
-**Launch at Login** registers the app as a login item. Keep the app bundle in a
-stable location, for example `/Applications`, because the login item points to
-the bundle path.
-
-The build script signs the app with the first "Developer ID Application" identity in
-your keychain, or with an ad-hoc signature if none exists. Set `CODESIGN_IDENTITY`
-to choose another identity.
 
 ## Notes
 
