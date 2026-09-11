@@ -4,6 +4,16 @@ Menu bar app for macOS. When Focus Mode is on, it hides every other application
 each time you switch to a new application. This is the same effect as Cmd+Option+H,
 applied automatically.
 
+## Demo
+
+Focus Mode on: switch to an app, every other app hides.
+
+![Focus Mode on](docs/enabled.gif)
+
+Focus Mode off: windows of other apps stay on screen.
+
+![Focus Mode off](docs/disabled.gif)
+
 ## Build
 
 ```sh
