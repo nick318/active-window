@@ -84,3 +84,7 @@ Set `NOTARIZE=0` to skip notarization.
 - No Accessibility permission is needed. The app uses `NSRunningApplication.hide()`.
 - Only applications with a Dock icon are hidden. Menu bar helpers and Spotlight are not affected.
 - Windows of the same application are not separated. macOS hides applications, not single windows.
+
+## License
+
+[MIT](LICENSE)
