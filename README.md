@@ -24,6 +24,10 @@ The app is signed with a Developer ID and notarized by Apple. macOS 13 or later.
 
 ## Use
 
+The app has no window. The menu bar icon is the only interface.
+
+![Menu bar menu](docs/menu.png)
+
 Click the menu bar icon.
 
 - **Focus Mode** turns the behavior on or off. The setting persists between launches.
